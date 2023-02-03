@@ -1,0 +1,69 @@
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand" routerLink="">  <img src="../../assets/logoB.png" width="80%" height="40"> </a> 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="" title="Accueil">Accueil </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="service" title="Service">Service</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="login" title="Connecter">Inscritption</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="contact" title="Contacter">Contact</a>
+      </li>
+      <li class="nav-item">
+        <button routerLink="/work" type="button" class="btn btn-info">Devenez prestataire</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet> </router-outlet>
+
+
+
+<!-- footer -->
+
+<body>
+  <div class="footer-dark">
+      <footer>
+          <div class="container">
+              <div class="row">
+                  <div class="col-sm-6 col-md-3 item">
+                      <h3>Services</h3>
+                      <ul>
+                          <li><a routerLink="/course">Secteur</a></li>
+                          <li><a routerLink="/course">Disponibilité</a></li>
+                          <li><a routerLink="/course">Paiement Sécurisé</a></li>
+                          <li><a routerLink="/course">rapidité</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-sm-6 col-md-3 item">
+                      <h3>Inscritption</h3>
+                      <ul>
+                          <li><a routerLink="/login">Espace Client</a></li>
+                          <li><a routerLink="/login">Espace chauffeur</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-md-6 item text">
+                      <h3>Vos Transport</h3> 
+                      <p> Votre camionnette avec chauffeur
+                        <br> disponible dans l'heure</p>
+                       
+                  </div>
+                  
+              </div>
+              <p class="copyright">VTransport</p> 
+          </div>
+      </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+</body>

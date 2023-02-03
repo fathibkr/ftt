@@ -1,0 +1,64 @@
+
+h1
+{
+  margin-top: 30px;
+    color: #03090b;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif, Times, serif;
+}
+
+
+
+
+
+div#btn{
+  color: #1ea0c8;
+}
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgb(0, 0, 0) !important;
+  font-size: 30px;
+ }
+ 
+
+.mat-form-field-should-float {    
+font-size: 20px;
+}
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: green !important;
+} 
+
+
+.col-md-6
+{
+    margin: 0 auto;
+  max-width: 800px;
+  height: 270px;
+  border-radius: 3px;
+  font-size: large;
+  opacity: 200%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+div {
+  display: block;
+}
+
+

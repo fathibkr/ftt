@@ -1,0 +1,106 @@
+
+<div class="Section_top">
+    
+  <div class="container">
+      
+          <div class="content">
+              <div>
+                  <h1>
+                    
+                      Votre camionnette avec chauffeur
+                      <br> disponible dans l'heure
+                  </h1>
+                 
+              </div>
+             
+         
+              <div class="col-md-6 p-2">
+
+  <div class="row" style="background-color:aqua; opacity: 70%;">
+
+
+    <mat-google-maps-autocomplete country="tn"
+                                  class="col-6"
+                                  type="address"
+                                  placeholderText="Adresse de depart"
+                                  required
+                                  appearance="fill" 
+                                  (onAutocompleteSelected)="onAutocompleteSelected($event)"
+                                  (onLocationSelected)="onLocationSelected($event)">
+    </mat-google-maps-autocomplete>
+
+  <mat-google-maps-autocomplete country="tn"
+                                class="col-6"
+                                type="address"
+                                placeholderText="dresse de arrive"
+                                required
+                                appearance="fill"
+                                (onAutocompleteSelected)="onAutocompleteSelected1($event)"
+                                (onLocationSelected)="onLocationSelected2($event)">
+  </mat-google-maps-autocomplete>
+</div>
+
+<div class="row" style="background-color:aqua; opacity: 70%;">
+  <mat-form-field class="col-6" appearance="fill">
+    <mat-label>Distance</mat-label>
+    <input matInput  [(ngModel)]="commande.distance" maxlength="10" placeholder="Distance KM" required>
+  </mat-form-field>
+
+  <mat-form-field class="col-6"  appearance="fill"  >
+    <mat-label>Number De persone</mat-label>
+    <mat-select [(ngModel)]="commande.numberPersons"  required>
+      <mat-option value="0">
+       Aucun
+      </mat-option>
+      <mat-option value="1">
+        1 manutention
+      </mat-option>
+      <mat-option value="3">
+        2 manutention
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="row" style="background-color:aqua; opacity: 70%;">
+
+  <mat-form-field appearance="fill">
+    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choiser  date & heure"  [(ngModel)]="commande.dateDepart" required>
+
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+
+    <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+  </mat-form-field>
+
+</div>
+
+<div class="row" style="background-color:aqua; opacity: 70%;">
+
+   <mat-form-field appearance="fill"  >
+    <mat-label>Type de vehecule</mat-label>
+    <mat-select   [(ngModel)]="type" required>
+      <mat-option value="VEHICULE">
+        VEHICULE
+      </mat-option>
+      <mat-option value="CAMION">
+        CAMION
+      </mat-option>
+      <mat-option value="CAMION_POIDS_LOURDS">
+        CAMION POIDS LOURDS
+      </mat-option>
+    </mat-select>
+   </mat-form-field>
+
+    </div>
+     <div id="btn">
+      <input class="btn btn-primary btn-lg" type="button" [disabled]="!type" (click)="addCommande()"   id="validation" name="validation" value="Estimer">
+     </div>
+    </div>
+   </div>
+  </div>  
+</div>
+             
+          
+   
+
+      

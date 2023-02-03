@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <span  class="nav-item">
+      <button mat-button  class="menu-button nav-link "  routerLink="/dashAgent/previous" routerLinkActive="active-list-item">
+
+        <img src="../../../assets/logoC.png" width="120" height="40">
+      </button>
+  </span>
+
+
+  <span  class="nav-item">
+      <button mat-button  class="menu-button nav-link "  routerLink="/client/commande" routerLinkActive="active-list-item">
+        <mat-icon>bar_chart</mat-icon>
+        <span >Commander une vehecule</span>
+      </button>
+  </span>
+  <span  class="nav-item">
+      <button mat-button  class="menu-button nav-link "  routerLink="/client/listCommande" routerLinkActive="active-list-item">
+        <mat-icon>insert_chart</mat-icon>
+        <span >Mes Commandes </span>
+      </button>
+  </span>
+
+  <span class="nav-item text-end ">
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon favorite-icon"
+          aria-label="Example icon-button with heart icon">
+    <img [src]="retrievedImage" class="rounded-circle imgIcon  " height="28" width="28" alt="image">
+  </button>
+  <mat-menu #menu="matMenu">
+    <span mat-menu-item class="text-center">
+      <p class="name">{{user.firstName}} {{user.lastName}}</p>
+
+
+    </span>
+    <hr >
+   <!-- <button mat-menu-item (click)="openDialog()">
+      <mat-icon>burst_mode</mat-icon>
+      <span> Reset image </span>
+    </button>
+      <button mat-menu-item (click)="openDialogPassword()">
+          <mat-icon>security</mat-icon>
+          <span > Reset password </span>
+        </button>
+    <hr> -->
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Déconnecter</span>
+    </button>
+  </mat-menu>
+    </span>
+</nav>
+<router-outlet></router-outlet>

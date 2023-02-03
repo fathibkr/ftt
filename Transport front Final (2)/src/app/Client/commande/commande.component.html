@@ -1,0 +1,87 @@
+<h1  style="text-align: center; ">passer votre commande</h1>
+
+<div class="col-md-6 p-2">
+
+  <div class="row">
+    
+      <mat-google-maps-autocomplete country="tn"
+                                    class="col-6"
+                                    type="address"
+                                    placeholderText="depart"
+                                    appearance="fill"
+                                    (onAutocompleteSelected)="onAutocompleteSelected($event)"
+                                    (onLocationSelected)="onLocationSelected($event)">
+      </mat-google-maps-autocomplete>
+
+    <mat-google-maps-autocomplete country="tn"
+                                  class="col-6"
+                                  type="address"
+                                  placeholderText="arrive"
+                                  appearance="fill"
+                                  (onAutocompleteSelected)="onAutocompleteSelected1($event)"
+                                  (onLocationSelected)="onLocationSelected2($event)">
+    </mat-google-maps-autocomplete>
+  
+  </div>
+  <div class="row">
+    <mat-form-field class="col-6" appearance="fill">
+      <mat-label>Distance</mat-label>
+      <input matInput [(ngModel)]="commande.distance" maxlength="10" placeholder="First name" required>
+    </mat-form-field>
+    <mat-form-field class="col-6"  appearance="fill"  >
+      <mat-label>Number De persone</mat-label>
+      <mat-select  [(ngModel)]="commande.numberPersons" >
+        <mat-option value="0">
+         Aucun
+        </mat-option>
+        <mat-option value="1">
+          1 manutention
+        </mat-option>
+        <mat-option value="2">
+          2 manutention
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="row">
+
+    <mat-form-field appearance="fill">
+      <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date & time" [(ngModel)]="commande.dateDepart">
+
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+
+      <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+    </mat-form-field>
+
+  </div>
+  <div class="row">
+
+    <mat-form-field appearance="fill"  >
+      <mat-label>Type de vehecule</mat-label>
+      <mat-select  [(ngModel)]="type" >
+        <mat-option value="VEHICULE">
+          VEHICULE
+        </mat-option>
+        <mat-option value="CAMION">
+          CAMION
+        </mat-option>
+        <mat-option value="CAMION_POIDS_LOURDS">
+          CAMION POIDS LOURDS
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+
+
+
+
+  <div class="row w-100 align-items-center justify-content-center">
+
+    <button mat-stroked-button type="submit" class="w-50" [disabled]="!type" (click)="addCommande()" cdkFocusInitial> Ajouter</button>
+
+  </div>
+
+
+</div>

@@ -1,0 +1,10 @@
+
+
+<h1> Votre commande  </h1>
+<p> de :{{data.depart}}</p>
+<p> a  : {{data.arrive}}</p>
+<p> le  : {{data.dateDepart | date:'MMM d, y, h:mm a'}}</p>
+<p> avec le distance  : {{data.distance}} Km</p>
+<h2> sont prix est : {{data.price}} dt</h2>
+
+<button mat-stroked-button  (click)="valide()">confirmer</button>

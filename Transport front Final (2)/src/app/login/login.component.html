@@ -1,0 +1,175 @@
+<div class="bg-light full-height h-100 p-5  ">
+  <div class="container  ">
+    <div class="row">
+      <div class="col-md-6 p-2">
+
+        <div class="d-flex justify-content-center align-items-center mb-4 ">
+          <label for="file" class="uploadIcon  text-center bg-light   rounded-circle"><a>
+            <mat-icon>camera_enhance</mat-icon>
+          </a></label>
+          <input type="file" id="file" accept="image/*" (change)="onSelectFile($event)" class="form-control-file"/>
+          <img class="rounded-circle  "
+               [src]="retrievedImage"
+               alt="" width="120" height="120">
+
+        </div>
+          <div class="row justify-content-center align-items-center">
+
+            <mat-radio-group
+              aria-labelledby="example-radio-group-label"
+              class="example-radio-group col-6 "
+              [(ngModel)]="role">
+              <mat-radio-button color="primary" class="example-radio-button" value="client">
+                Client
+              </mat-radio-button>
+              <mat-radio-button color="primary" class="example-radio-button" value="chauffeur">
+                Chauffeur
+              </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="row">
+            <mat-form-field class="col-6" appearance="fill">
+              <mat-label>Nom</mat-label>
+              <input matInput [(ngModel)]="user.firstName" maxlength="10" placeholder="First name" required>
+            </mat-form-field>
+            <mat-form-field class="col-6" appearance="fill">
+              <mat-label>Prenom</mat-label>
+              <input matInput maxlength="10" [(ngModel)]="user.lastName" placeholder="Last name" required>
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="col-6" appearance="fill">
+              <mat-label>Email</mat-label>
+              <input matInput placeholder="pat@example.com" [(ngModel)]="user.email" [formControl]="email" required>
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="col-6" appearance="fill">
+              <mat-label>telephone</mat-label>
+              <input type="tel" maxlength="8" minlength="8" matInput placeholder="99-999-999" [(ngModel)]="user.mobile">
+              <mat-icon matSuffix>phone</mat-icon>
+            </mat-form-field>
+
+          </div>
+          <div class="row">
+            <mat-form-field appearance="fill" class="col-12">
+              <mat-label>date de naissance</mat-label>
+              <input matInput [(ngModel)]="user.birthDay" [matDatepicker]="picker">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+
+          </div>
+          <div class="row " *ngIf="role=='chauffeur'">
+
+              <mat-form-field class="col-6" appearance="fill">
+                <mat-label>CIN</mat-label>
+                <input matInput [(ngModel)]="user.cnn" maxlength="10" placeholder="First name" required>
+              </mat-form-field>
+              <mat-form-field class="col-6" appearance="fill">
+                <mat-label>Series</mat-label>
+                <input matInput maxlength="10" [(ngModel)]="user.series" placeholder="Last name" required>
+              </mat-form-field>
+
+          </div>
+        <div class="row " *ngIf="role=='chauffeur'">
+
+          <mat-form-field class="col-6" appearance="fill">
+            <mat-label>numero fuscale </mat-label>
+            <input matInput [(ngModel)]="user.numFiscal" placeholder="numero fuscale" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill"  class="col-6">
+            <mat-label>Type de vehecule</mat-label>
+            <mat-select  [(ngModel)]="user.carType" >
+              <mat-option value="VEHICULE">
+                VEHICULE
+              </mat-option>
+              <mat-option value="CAMION">
+                CAMION
+              </mat-option>
+              <mat-option value="CAMION_POIDS_LOURDS">
+                CAMION POIDS LOURDS
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+          <div class="row">
+            <mat-form-field appearance="fill" class=" col-6 ">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" placeholder="password" [formControl]="password"
+                     required>
+              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="password.invalid">{{getErrorPasswordMessage()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="col-6">
+              <mat-label>Confirm password</mat-label>
+              <input matInput [type]="show ? 'password' : 'text'" placeholder="confirm password"
+                     [formControl]="confirmPassword" required>
+              <mat-icon matSuffix (click)="show = !show">{{show ? 'visibility_off' : 'visibility'}}</mat-icon>
+              <mat-error *ngIf="confirmPassword.invalid">{{getErrorConfirmPasswordMessage()}}</mat-error>
+              <mat-error *ngIf="confirmPassword.dirty &&confirmPassword.value!=password.value">password not match
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+          <div class="row w-100 align-items-center justify-content-center">
+
+            <button mat-stroked-button class="w-50" (click)="addUser()" cdkFocusInitial> register</button>
+
+          </div>
+
+
+        </div>
+        <div class="col-md-1">
+          <div class="vl "></div>
+        </div>
+        <div class="col-md-5 contents">
+          <div class="row justify-content-center ">
+
+            <img src="../../assets/logoC.png " alt="logo" class="mb-3" width="500" height="100">
+            <div class="col-md-8 justify-content-center">
+              <div class="mb-4 ">
+                <h1 class="text-center">LogIn</h1>
+              </div>
+              <form [formGroup]="loginForm">
+                <div class="example-container">
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Votre email</mat-label>
+                    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorEmailMessage()}}</mat-error>
+                  </mat-form-field>
+                </div>
+                <div class="example-container">
+                  <mat-form-field appearance="fill" class="w-100">
+                    <mat-label>Votre mot de passe</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="password" [formControl]="password"
+                           required>
+                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    <mat-error *ngIf="password.invalid">{{getErrorPasswordMessage()}}</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="row justify-content-center">
+                  <button mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="signIn()"
+                          class="w-75  "> LogIn
+                  </button>
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+

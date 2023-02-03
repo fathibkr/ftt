@@ -1,0 +1,122 @@
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav opened mode="side" >
+
+    <div class="nav-link text-center mt-4 ">
+      <img src="../../../assets/logoC.png" alt="logo" class="border-white mb-3" height="60" width="200">
+
+     </div>
+    <ul class="nav">
+      <li  class="nav-item">
+        <button mat-button class="menu-button nav-link " routerLink="/dashboard" routerLinkActive="active-list-item">
+          <mat-icon>account_balance</mat-icon>
+          <span>Dashboard </span>
+        </button>
+      </li>
+      <li  class="nav-item text-center">
+        <button  mat-button class="menu-button nav-link active   " routerLink="/dashboard/listChauffeur" routerLinkActive="active-list-item">
+          <mat-icon>dashboard</mat-icon>
+          <span >List des Chauffeurs</span>
+
+        </button>
+      </li>
+      <li  class="nav-item">
+        <button mat-button class="menu-button nav-link " routerLink="/dashboard/listClient" routerLinkActive="active-list-item">
+          <mat-icon>map</mat-icon>
+          <span>list des clients  </span>
+        </button>
+      </li>
+      <li  class="nav-item">
+
+        <button mat-button  class="menu-button nav-link "  routerLink="/dashboard/listCommande" routerLinkActive="active-list-item">
+          <mat-icon>bar_chart</mat-icon>
+          <span >list des Commandes</span>
+        </button>
+
+
+
+      </li>
+
+
+
+    </ul>
+
+
+  </mat-sidenav>
+  <mat-sidenav-content class="  bg-light">
+    <mat-toolbar class="bg-white  " >
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+      <span class="w-100">
+        <h6 class="title"> Admin dashboard</h6>
+    </span>
+
+      <p class="name text-end"> <span class="designation">Aujourd'hui {{date|date}}</span> <span class="vl"></span>{{user.firstName}} {{user.lastName}}</p>
+      <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon favorite-icon"
+              aria-label="Example icon-button with heart icon">
+        <img [src]="retrievedImage" class="rounded-circle  " height="28" width="28" alt="image">
+      </button>
+      <mat-menu #menu="matMenu">
+       <span mat-menu-item class="text-center">
+      <p class="name">{{user.firstName}} {{user.lastName}}</p>
+
+
+    </span>
+        <hr >
+        <button mat-menu-item (click)="openDialog()">
+          <mat-icon>person</mat-icon>
+          <span> Modifié profile </span>
+        </button>
+
+
+        <hr>
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Déconnecter</span>
+        </button>
+      </mat-menu>
+
+    </mat-toolbar>
+
+    <mat-progress-bar *ngIf="LoadService.isloading|async" mode="indeterminate"></mat-progress-bar>
+
+    <div class="container  h-100 ">
+
+
+      <div class="row  p-2 justify-content-center  align-self-center">
+        <div class="row">
+          <div class="col-sm-1  ">
+          </div>
+          <div class="col-sm-3 card bg-warning ">
+            <div class="card-body text-center">
+              <img src="../../assets/demande.png" width="50" height="50">
+              <p class="card-text">Total Commandes :<br><br> {{result}}</p>
+            </div>
+          </div>
+
+          <div class="col-sm-1  ">
+          </div>
+          <div class="col-sm-3 card bg-success " >
+            <div class="card-body text-center">
+              <img src="../../assets/adclient.png" width="60" height="60">
+              <p class="card-text">Total Clients :<br><br> {{totalC}}</p>
+            </div>
+          </div>
+          <div class="col-sm-1  ">
+          </div>
+          <div class="col-sm-3 card bg-danger ">
+            <div class="card-body text-center">
+              <img src="../../assets/adchauff.png" width="50" height="50">  
+              <p class="card-text">Total Chauffeurs :<br><br> {{TotalChauf}}</p>
+            </div>
+          </div>
+        </div>
+        <router-outlet class="w-100" ></router-outlet>
+      </div>
+
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
